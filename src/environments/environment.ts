@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  baseUrl: 'localhost:4200/',
+  baseApi: 'https://www.alphavantage.co/query?apikey=0ES5RXNP563TIQOY'
 };
 
 /*

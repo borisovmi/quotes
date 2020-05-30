@@ -1,0 +1,25 @@
+.equity-page-container {
+  display: flex;
+  justify-content: space-between;
+}
+.equity-graph-container {
+  margin: auto;
+}
+.equity-data-container {
+  .equity-actions {
+    display: flex;
+    flex-direction: column;
+    .equity-action {
+      margin: 0.1em;
+    }
+  }
+}
+.loader-container {
+  margin: auto;
+}
+
+@media screen and (max-width: 599.99px) {
+  .equity-page-container {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,45 @@
+<div class="equity-page-container">
+  <ng-container *ngIf="equity?.MetaData && !loading">
+    <div class="equity-graph-container">
+      <ngx-charts-line-chart
+        [view]="[viewSizes.width, viewSizes.height]"
+        [autoScale]="true"
+        [results]="dataPoints"
+        [xAxis]="true"
+        [yAxis]="true"
+        [showXAxisLabel]="true"
+        [showYAxisLabel]="true"
+        [xAxisLabel]="'Date'"
+        [yAxisLabel]="'Price'"
+      ></ngx-charts-line-chart>
+    </div>
+
+    <div class="equity-data-container" *ngIf="equity?.MetaData">
+      <mat-card class="equity-data">
+        <mat-card-header>
+          <mat-card-title>
+            {{ equity.MetaData.Symbol }} - Daily Prices
+          </mat-card-title>
+          <mat-card-subtitle>
+            Last refreshed - {{ equity.MetaData.LastRefreshed | date }}
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-actions class="equity-actions">
+          <a
+            class="equity-action"
+            *ngFor="let toggler of equityDataTypeTogglers"
+            mat-flat-button
+            (click)="setEquityDataType(toggler.type)"
+            [color]="equityDataType === toggler.type ? 'accent' : 'primary'"
+          >
+            {{ toggler.text }}
+          </a>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </ng-container>
+
+  <div *ngIf="loading" class="loader-container">
+    <mat-spinner></mat-spinner>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<mat-toolbar class="navigation-container" color="primary">
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <div class="search-field">
+      <mat-form-field>
+        <mat-label>Search equity</mat-label>
+        <input
+          #searchInput
+          matInput
+          type="text"
+          formControlName="searchTerm"
+          [matAutocomplete]="auto"
+        />
+        <button
+          type="submit"
+          mat-button
+          matSuffix
+          mat-icon-button
+          [disabled]="loading || searchForm.invalid"
+        >
+          <mat-icon>search</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-spinner *ngIf="loading" color="accent" diameter="30"></mat-spinner>
+    </div>
+
+    <mat-autocomplete
+      #auto="matAutocomplete"
+      (optionSelected)="onOptionSelected($event)"
+    >
+      <a
+        *ngFor="let option of autocompleteOptions; let i = index"
+        [routerLink]="['daily', option.symbol]"
+        (click)="resetSearch()"
+        [matTooltip]="option.symbol + ' - ' + option.name"
+        matTooltipPosition="after"
+      >
+        <mat-option [value]="option.symbol">
+          {{ option.symbol }} - {{ option.name }}
+        </mat-option>
+      </a>
+    </mat-autocomplete>
+  </form>
+
+  <div class="navigation-links">
+    <a mat-fab [routerLink]="['/']">
+      <mat-icon>home</mat-icon>
+    </a>
+  </div>
+</mat-toolbar>

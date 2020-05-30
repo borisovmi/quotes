@@ -1,0 +1,12 @@
+.app-wrapper {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+}
+.main-container {
+  padding: var(--main-padding);
+}
+.footer-toolbar {
+  justify-content: center;
+}
