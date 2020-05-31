@@ -15,7 +15,7 @@
           mat-button
           matSuffix
           mat-icon-button
-          [disabled]="loading || searchForm.invalid"
+          [disabled]="loading || !(searchForm.value.searchTerm.length > 0)"
         >
           <mat-icon>search</mat-icon>
         </button>

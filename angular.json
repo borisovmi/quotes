@@ -137,5 +137,8 @@
       }
     }
   },
-  "defaultProject": "kms"
+  "defaultProject": "kms",
+  "cli": {
+    "analytics": "30cd99ba-52ab-4a3c-b0cd-7420facf43b5"
+  }
 }

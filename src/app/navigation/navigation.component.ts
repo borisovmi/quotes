@@ -39,7 +39,7 @@ export class NavigationComponent implements OnInit, OnDestroy {
       if (formValue.searchTerm === '') {
         this.resetAutocompeteOptions();
       } else {
-        if (formValue.searchTerm !== this.selectedOptionValue && this.searchForm.value.searchTerm) {
+        if (formValue.searchTerm !== this.selectedOptionValue && formValue.searchTerm.length > 0) {
           this.loading = true;
           this.autocompleteOptions = await this.symbolSearch.searchSymbols(formValue.searchTerm);
           this.loading = false;
@@ -64,7 +64,9 @@ export class NavigationComponent implements OnInit, OnDestroy {
   onSubmit() {
     const symbolParam = this.searchForm.value.searchTerm;
     this.resetSearch();
-    this.router.navigate(['daily', symbolParam]);
+    if (symbolParam.length > 0) {
+      this.router.navigate(['daily', symbolParam]);
+    }
   }
 
   ngOnDestroy() {
